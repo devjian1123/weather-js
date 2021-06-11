@@ -1,5 +1,5 @@
 class Weather {
-  constructor(country, city) {
+  constructor(city, country) {
     this.apiKey = "bfaa613564b6762cbea175fd750e8735";
     this.country = country;
     this.city = city;
@@ -9,7 +9,7 @@ class Weather {
 
   // Fetch Weather from API
   async getWeather() {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=${this.units}&lang=${this.lang}&appid=${this.apiKey}`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.country}&units=${this.units}&lang=${this.lang}&appid=${this.apiKey}`);
 
     const weatherData = await response.json();
     
@@ -20,7 +20,8 @@ class Weather {
     const response = await fetch(``)
   }
 
-  changeLocation(city) {
+  changeLocation(city, country) {
     this.city = city;
+    this.country = country;
   }
 }
